@@ -24,10 +24,42 @@ const run = async () => {
         currentCals = currentCals + Number(cals[i]);
     }
     
-    return maxCals;
-}
+        return maxCals;
+  }
 
-    console.log("ANSWER : ",maxCalories(lines));
+  let topCalories = (cals: any) => {
+
+        const maxCals: any[] = [];
+        maxCals.push(0,0,0)
+        let currentCals = 0;
+
+        for (let i = 0; i < cals.length; i++) {
+            if (cals[i] === '') {
+                if (maxCals[0] < currentCals) {
+                    maxCals.shift();
+                    maxCals.push(currentCals);
+                    maxCals.sort();
+                } 
+
+                currentCals = 0;
+                i++;
+            }
+
+            currentCals = currentCals + Number(cals[i]);
+        }
+
+        let totalMaxCals = 0;
+
+        for (let i = 0; i < maxCals.length; i++) {
+            totalMaxCals += maxCals[i];
+        }
+
+        return totalMaxCals;
+   }
+
+    console.log("MAX CALORIES : ", maxCalories(lines));
+    console.log("TOP CALORIES: ", topCalories(lines));
+
 };
 
 run();
