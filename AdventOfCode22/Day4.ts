@@ -98,10 +98,10 @@ const run = async () => {
                 }
             }
         }
-        if (Number(startRange1) <= Number(startRange2) && Number(endRange1) >= Number(endRange2) && endRange1 <= startRange2) {
+        if (Number(startRange1) <= Number(startRange2) && Number(endRange1) >= Number(endRange2)) {
             console.log("***********")
             total++
-        } else if (Number(startRange1) >= Number(startRange2) && Number(endRange1) <= Number(endRange2) && endRange1 >= startRange2) {
+        } else if (Number(startRange1) >= Number(startRange2) && Number(endRange1) <= Number(endRange2)) {
             console.log("***********")
             total++
         }
@@ -114,6 +114,8 @@ const run = async () => {
 
   }
 
+  
+
 
     console.log("Contains: ", contains(lines));
 
@@ -121,4 +123,4 @@ const run = async () => {
 
 run();
 
-// Wrong answers PT 2 : 302, 306 (too low), 309, 320, 504, 517 (too high)
+// Wrong answers PT 2 : 302, 306 (too low), 309, 320, 504, 517(too high)
