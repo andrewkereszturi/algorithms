@@ -5,24 +5,28 @@ const run = async () => {
   const lines = rawLines.split("\n");
 
   let crates = lines.slice(0,9);
-  let allCrates = {};
+  interface cratesType {  
+    [key: string]: any;
+  } 
+  let allCrates: cratesType = {};
+  console.log(crates)
+
+  let temp: any = [];
 
   for (let i = 0; i < crates.length; i++) {
-    
-    let temp = [];
-
     for (let j = 0; j < crates[i].length; j++) {
-        // console.log(crates[j][i])
-        if (crates[i][j] === '[' || crates[i][j] === ']') {
-            
-        } else if (Number.isInteger(Number(crates[i][j]))) {
+        if (crates[i][j] !== '[' && crates[i][j] !== ']' && crates[i][j] !== ' ') {
             // console.log(crates[i][j])
-        } else if (i === 8) {
-            console.log(Number(crates[i][j]))
+            temp.push(crates[i][j])
+            // console.log("TEMP:", temp)
+        }  if (i === crates.length -1) {
+            console.log(crates[i][j]);
+            console.log("TEMP", temp);
+            allCrates[crates[i][j]] = temp;
+            temp = [];
         }
     }
-    // console.log(crates[i][1])
-    // console.log(crates[8][1])
+    console.log("ALL CRATES: ", allCrates)
   }
 
   let getTopCrates = (pairSets: any) => {
