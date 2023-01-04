@@ -31,20 +31,36 @@ const run = async () => {
 
     const moves = lines.slice(10, lines.length)
 
+    // Part 1
+    // for (let i = 0; i < moves.length; i++) {
+
+    //     let move = moves[i].split(' ')
+
+    //     console.log(move)
+
+    //     for (let j = 0; j < move[1]; j++) {
+    //         const crate =  allCrates[move[3]].shift()
+    //         allCrates[move[5]].unshift(crate)
+    //     }
+    //     console.log(allCrates)
+    // }
+
+    // Part 2
     for (let i = 0; i < moves.length; i++) {
 
         let move = moves[i].split(' ')
 
         console.log(move)
-
+        let temp: any = [];
         for (let j = 0; j < move[1]; j++) {
             const crate =  allCrates[move[3]].shift()
-            allCrates[move[5]].unshift(crate)
+            temp.push(crate)
+        }
+        for (let j = 0; j = temp.length; j++) {
+            allCrates[move[5]].unshift(temp.pop())
         }
         console.log(allCrates)
-
     }
-    // console.log(allCrates)
 
   }
 
