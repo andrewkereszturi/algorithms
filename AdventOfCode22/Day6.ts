@@ -3,38 +3,31 @@ import { readFileSync } from 'fs';
 const run = async () => {
   const str = readFileSync("Day6-input.txt", "utf8");
 
-
-  const getTopCrates = (str: any) => {  
+  const packetMarker = (str: any) => {  
 
     for (let i = 0; i < str.length; i++) {
 
         let seen: any = {}
         
-        console.log(str.slice(0,10))
-
-        for (let j = 0; j < 5; j++) {
+        // For part 1 change 15 to 5
+        for (let j = 0; j < 15; j++) {
             if (seen[str[i+j]] === 1) {
-                // console.log(seen)
-                // console.log("*", str[i+j], i)
                 break
             } else {
                 seen[str[i+j]] = 1;
             }
-            if (seen[str[i+4]] === 1) {
-                console.log(i)
-                return
+            // For part 1 change 14 to 4
+            if (Object.keys(seen).length === 14) {
+                console.log(str.slice(i, i+14))
+                console.log(i + 14)
+                return i+14;
             }
         }
-        // console.log(seen)
     }
-
   }
 
-  
-console.log("Contains: ", getTopCrates(str));
+console.log("Packet Marker: ", packetMarker(str));
 
 };
 
 run();
-
-// Wrong answers PDTCWHPFM
