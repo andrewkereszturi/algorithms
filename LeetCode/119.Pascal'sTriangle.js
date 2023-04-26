@@ -27,28 +27,26 @@ var generate = function(numRows) {
 // Recursive Solution with helper
 // var generateTriangle = function(numRows, triangle) {
 
-//     if (numRows === 2) {
+//     if (numRows === 1) {
 //         return triangle;
 //     }
 
-//     let newRow = [1,1];
+//     let newRow = [1];
 //     let lastRow = triangle[triangle.length-1];
 
 //     for (let i = 0; i < lastRow.length-1; i++) {
-//         newRow.splice(i+1, 0, lastRow[i] + lastRow[i+1])
+//         newRow.push(lastRow[i] + lastRow[i+1])
 //     }    
-
+//     newRow.push(1)
 //     triangle.push(newRow)
 //     return generateTriangle(numRows - 1, triangle)
 // };
 
 // var generate = function(numRows) {
 
-//     let triangle = [[1], [1,1]];
-
+//     let triangle = [[1]];
+    
 //     if (numRows === 1) {
-//         return [[1]];
-//     } else if (numRows === 2) {
 //         return triangle;
 //     }
 
