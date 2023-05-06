@@ -5,6 +5,8 @@ var firstUniqChar = function(s) {
     //     seen[s[i]] = (seen[s[i]]+1) || 1 ;
     // }
 
+    let letters = s.split("")
+
     const seen = letters.reduce((seen, letter) => {
         seen[letter] = (seen[letter] + 1) || 1
         return seen
