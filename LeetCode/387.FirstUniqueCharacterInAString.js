@@ -1,9 +1,15 @@
 var firstUniqChar = function(s) {
-    let seen = {}
+    // let seen = {}
 
-    for(let i = 0; i < s.length; i++) {
-        seen[s[i]] = (seen[s[i]]+1) || 1 ;
-    }
+    // for(let i = 0; i < s.length; i++) {
+    //     seen[s[i]] = (seen[s[i]]+1) || 1 ;
+    // }
+
+    const seen = letters.reduce((seen, letter) => {
+        seen[letter] = (seen[letter] + 1) || 1
+        return seen
+    }, {});
+
 
     for(letter in seen ) {
         if (seen[letter] === 1) {
