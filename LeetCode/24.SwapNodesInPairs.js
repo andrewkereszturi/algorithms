@@ -1,15 +1,16 @@
 const swapPairs = (head) => {
-
+    
     if(head === null || head.next === null) {
         return head
     }
-
-    let first = head.val
-    head.val = head.next.val
-    head.next.val = first
-    head.next.next = swapPairs(head.next.next);
-    return head
     
+    const second = head
+    const first = head.next
+    const next = head.next.next
+
+    first.next = second
+    second.next = swapPairs(next);
+    return first
 }
 
 // [2,1,4,3]
@@ -65,3 +66,19 @@ console.log(swapPairs([[1,2,3,4]]))
 //     return swapPairs(next, prev);
     
 // }
+
+// Second solution, incorrect since it modifies val 
+
+// const swapPairs = (head) => {
+
+    //     if(head === null || head.next === null) {
+    //         return head
+    //     }
+    
+    //     let first = head.val
+    //     head.val = head.next.val
+    //     head.next.val = first
+    //     head.next.next = swapPairs(head.next.next);
+    //     return head
+        
+    // }
