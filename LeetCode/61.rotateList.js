@@ -15,7 +15,6 @@ var rotateRight = function(head, k) {
         return head;
     } 
     let l1 = head
-    let l2 = head
     while(l1.next !== null) {
         l1 = l1.next
     }
