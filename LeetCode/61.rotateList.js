@@ -1,52 +1,34 @@
-// const removeLastNode = (head) => {
-//     if (head === null || head.next === null){
-//         return null;
-//     }
-//     let newTail = head;
-//     while (newTail.next.next !== null) {
-//         newTail = newTail.next;
-//     }
-//     newTail.next = null;
-//     return head;
-// }
- 
-// var rotateRight = function(head, k) {  
-//     if (!head || k === 0) {
-//         return head;
-//     } 
-//     let l1 = head
-//     while(l1.next !== null) {
-//         l1 = l1.next
-//     }
-//     const oneLess = removeLastNode(head);
-
-//     l1.next = oneLess
-//     return rotateRight(l1, --k)
-
-// };
-
-// Cleaned up Solution 
 const removeLastNode = (head) => {
-    if (head === null || head.next === null){
-        return null;
+    if(!head || !head.next) {
+        return head
+    } 
+
+    let newHead = head;
+
+    // Loop through list until second to last node
+    while (newHead.next.next !== null) {
+        newHead = newHead.next;
     }
-    let newTail = head;
-    while (newTail.next.next !== null) {
-        newTail = newTail.next;
-    }
-    newTail.next = null;
+    
+    // Set last node to null and return new list
+    newHead.next = null;
     return head;
 }
 
 const getLastNode = (head) => {
-    if (head === null || head.next === null){
-        return null;
-    }
+    if(!head || !head.next) {
+        return head
+    } 
+
     let newTail = head;
-    while (newTail.next.next !== null) {
+
+    // Loop through list to last node
+    while (newTail.next !== null) {
         newTail = newTail.next;
     }
-    return newTail.next;
+
+    // Return last node
+    return newTail;
     
 }
  
@@ -57,11 +39,31 @@ var rotateRight = function(head, k) {
     } 
 
     let l1 = head
-    for(let i = 0; i < k; i++) {
+
+    // loop through list to get its length
+    let length = 0
+    while (l1 !== null) {
+        length++
+        l1 = l1.next
+    }
+    
+    l1 = head
+
+    // rotate k % i times
+    for(let i = 0; i < k % length; i++) {
+
+        // pop tail node from list, save it as newHead
         let newHead = getLastNode(l1)
-        let tail = removeLastNode(l1);
-        newHead.next = tail
+
+        // return list without the tail node
+        let newTail = removeLastNode(l1)
+    
+        // cobine new head and tail
+        newHead.next = newTail
+
+        // assign newHead value to l1 to be able to return it outside the loop
         l1 = newHead
     }
+
     return l1
 };
